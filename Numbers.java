@@ -4,8 +4,11 @@ public class Numbers implements Runnable{
         this.i = i;
     }
     public void run(){
-        if(numbers()){
-            System.out.println(i);
+        while(Main.count==i){
+            if (numbers()) {
+                System.out.println(i);
+                Main.count++;
+            }
         }
 
     }

@@ -4,8 +4,11 @@ public class Fizz implements Runnable{
         this.i = i;
     }
     public void run(){
-       if(fizz()) {
-            System.out.println("Fizz");
+       while(Main.count == i) {
+            if (fizz()) {
+                System.out.println("Fizz");
+                Main.count++;
+            }
         }
 
     }

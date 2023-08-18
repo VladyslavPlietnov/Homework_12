@@ -1,24 +1,13 @@
 
 
 public class Main {
+    static volatile int count =1;
     public static void main(String[] args) throws InterruptedException {
 
-        Thread t1 = new Thread(){
-            public void run(){
-                while(true){
-                    System.out.println("Минуло 5 секунд");
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        };
 
-        t1.start();
 
-        for(int i =1; i<100; i++){
+        for(int i =1; i<101; i++){
+
          Thread fizz = new Thread(new Fizz(i));
          Thread buzz = new Thread(new Buzz(i));
          Thread fizzBuzz = new Thread(new FizzBuzz(i));
@@ -27,6 +16,10 @@ public class Main {
             buzz.start();
             fizzBuzz.start();
             numbers.start();
+            fizz.join();
+            buzz.join();
+            fizzBuzz.join();
+            numbers.join();
         }
 
     }

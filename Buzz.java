@@ -4,13 +4,12 @@ public class Buzz implements Runnable{
         this.i = i;
     }
     public void run(){
-        if(buzz()){
-            System.out.println("Buzz");
-        }
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+       while(Main.count ==i) {
+            if (buzz()) {
+                System.out.println("Buzz");
+                Main.count++;
+            }
+
         }
     }
     public boolean buzz(){
